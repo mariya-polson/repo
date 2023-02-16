@@ -1,0 +1,106 @@
+<mat-sidenav-container (backdropClick)="isExpanded = !isExpanded">
+  <mat-sidenav
+    #snav
+    mode="over"
+    class="pb-20"
+    [ngClass]="isExpanded ? 'menu-opened' : ''"
+  >
+    <button
+      type="button"
+      mat-icon-button
+      class="sidenav-toggle"
+      [ngClass]="isExpanded ? 'open' : ''"
+      [attr.aria-label]="isExpanded ? 'Collapse Navbar' : 'Expand Navbar'"
+      (click)="isExpanded = !isExpanded; snav.toggle()"
+    >
+      <mat-icon class="toggle-icon">arrow_forward</mat-icon>
+    </button>
+    <div
+      class="sidenav-wrapper"
+      [ngClass]="isExpanded ? 'pl-24 pr-24 pt-32' : 'pl-16 pr-16 pt-16'"
+    >
+      <div>
+        <div class="logo" [ngClass]="isExpanded ? 'mb-48' : 'mb-32'">
+          <h2 class="mb-0">
+            <a title="Logo">
+              <img
+                src="https://sit-style-guide.azureedge.net/styles/assets/images/logo-fiquest-expanded.svg"
+                alt="Logo"
+                *ngIf="isExpanded"
+              />
+              <img
+                src="https://sit-style-guide.azureedge.net/styles/assets/images/logo-fiquest-icon.svg"
+                alt="Logo"
+                *ngIf="!isExpanded"
+              />
+            </a>
+          </h2>
+        </div>
+        <nav [ngClass]="{ closed: !isExpanded }">
+          <ul>
+            <li>
+              <a aria-label="Homepage" routerLink="/" title="Homepage"
+                ><mat-icon class="sidenav-icon mr-14">home</mat-icon
+                ><ng-container *ngIf="isExpanded">Homepage</ng-container></a
+              >
+            </li>
+            <li>
+              <a aria-label="Feature" routerLink="/" title="Features"
+                ><mat-icon class="sidenav-icon mr-14">verified</mat-icon
+                ><ng-container *ngIf="isExpanded">Features</ng-container></a
+              >
+            </li>
+            <li>
+              <a
+                aria-label="Rolemanagement"
+                routerLink="/"
+                title="role-mnagement"
+                ><mat-icon class="sidenav-icon mr-14">account_tree</mat-icon
+                ><ng-container *ngIf="isExpanded"
+                  >Role Management</ng-container
+                ></a
+              >
+            </li>
+            <li>
+              <a aria-label="user" routerLink="/" title="User"
+                ><mat-icon class="sidenav-icon mr-14">group</mat-icon
+                ><ng-container *ngIf="isExpanded"
+                  >User Management</ng-container
+                ></a
+              >
+            </li>
+            <li>
+              <a aria-label="global" routerLink="/" title="global-data-editor"
+                ><mat-icon class="sidenav-icon mr-14">language</mat-icon
+                ><ng-container *ngIf="isExpanded"
+                  >Global data editor</ng-container
+                ></a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <nav [ngClass]="{ closed: !isExpanded }">
+        <ul>
+          <li>
+            <a aria-label="Settings" routerLink="/" title="Settings">
+              <mat-icon class="sidenav-icon mr-14">settings</mat-icon
+              ><ng-container *ngIf="isExpanded">Settings</ng-container>
+            </a>
+          </li>
+          <li><span class="env">UAT</span></li>
+        </ul>
+      </nav>
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <app-header></app-header>
+    <main>
+      <div class="main-content">
+        <!---------- Main Content Starts from here  ------------>
+        <app-tab></app-tab>
+        <router-outlet></router-outlet>
+      </div>
+    </main>
+  </mat-sidenav-content>
+</mat-sidenav-container>

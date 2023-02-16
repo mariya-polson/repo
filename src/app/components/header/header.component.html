@@ -1,0 +1,46 @@
+<header class="header">
+  <mat-toolbar>
+    <h2 class="d-flex align-items-center mb-0 mat-h2">Roles</h2>
+    <span class="header-spacer"></span>
+
+    <div class="d-flex ml-14">
+      <div class="avatar avatar-36 avatar-bg-light">
+        <img
+          src="https://sit-style-guide.azureedge.net/styles/assets/images/avatar-46x46.png"
+          alt="avatar-46x46"
+        />
+      </div>
+      <button
+        type="button"
+        mat-button
+        class="plain-button"
+        aria-label="Dropdown Toggle"
+        color="ghost"
+        [matMenuTriggerFor]="profileMenu"
+      >
+        <div class="d-flex align-items-center">
+          <mat-icon>keyboard_arrow_down</mat-icon>
+        </div>
+      </button>
+      <mat-menu #profileMenu="matMenu">
+        <div class="media media-46 media-bg-light pl-16 pr-16 mb-12">
+          <div class="media-avatar mr-12">
+            <div class="avatar avatar-36 avatar-bg-light">
+              <img
+                src="https://sit-style-guide.azureedge.net/styles/assets/images/avatar-46x46.png"
+                alt="avatar-46x46"
+              />
+            </div>
+          </div>
+          <div class="media-body">
+            <h3 class="media-title mat-h3 mb-0">Jane Doe</h3>
+          </div>
+        </div>
+        <div class="dropdown-divider"></div>
+        <button mat-menu-item class="d-flex align-items-center">
+          <mat-icon>power_settings_new</mat-icon>Log Out
+        </button>
+      </mat-menu>
+    </div>
+  </mat-toolbar>
+</header>

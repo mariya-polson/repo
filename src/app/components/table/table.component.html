@@ -1,0 +1,94 @@
+<div class="container bg-white mt-40">
+  <div class="row justify-content-between">
+    <div class="col pt-30 d-flex align-items-center">
+      <h1 class="mat-h1 mat-headline">Root Default Roles</h1>
+
+      <mat-form-field
+        class="ml-10 mt-0"
+        floatLabel="never"
+        appearance="outline"
+      >
+        <mat-icon matPrefix>search</mat-icon>
+        <input matInput placeholder="Search Roles" />
+      </mat-form-field>
+    </div>
+    <div class="col d-flex justify-content-end align-items-center mt-0">
+      <button type="button" mat-flat-button color="primary">
+        <mat-icon class="mr-10">add</mat-icon>Add Role
+      </button>
+    </div>
+  </div>
+  <div class="row pb-20 justify-content-center align-items-center">
+    <div class="table-responsive">
+      <table mat-table [dataSource]="dataSource">
+        <ng-container matColumnDef="lastUpdated">
+          <th mat-header-cell class="bg-black-100" *matHeaderCellDef>
+            Last Updated On
+          </th>
+          <td mat-cell *matCellDef="let element">{{ element.lastUpdated }}</td>
+        </ng-container>
+        <!-- Role Name Column -->
+        <ng-container matColumnDef="roleName">
+          <th mat-header-cell class="bg-black-100" *matHeaderCellDef>
+            Role Name
+          </th>
+          <td mat-cell *matCellDef="let element">{{ element.roleName }}</td>
+        </ng-container>
+
+        <!-- Role Description Column -->
+        <ng-container matColumnDef="roleDescription">
+          <th mat-header-cell class="bg-black-100" *matHeaderCellDef>
+            Role Description
+          </th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.roleDescription }}
+          </td>
+        </ng-container>
+
+        <!-- Status Column -->
+
+        <ng-container matColumnDef="status">
+          <th mat-header-cell class="bg-black-100" *matHeaderCellDef>Status</th>
+
+          <td mat-cell *matCellDef="let element">
+            <mat-slide-toggle
+              color="primary"
+              [checked]="element.status"
+              (change)="toggleChanges(element)"
+            ></mat-slide-toggle>
+            <span
+              class="status-label ml-10"
+              [ngClass]="element.status ? 'success' : 'inactive'"
+            >
+              {{ element.status ? "Active" : "Inactive" }}</span
+            >
+          </td>
+        </ng-container>
+
+        <!-- Actions Column -->
+        <ng-container matColumnDef="actions" class="d-flex flex-coloumn">
+          <th mat-header-cell class="bg-black-100" *matHeaderCellDef>
+            Actions
+          </th>
+          <td mat-cell *matCellDef="let element" width="120">
+            <button mat-icon-button aria-label="Edit">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button class="ml-10" mat-icon-button aria-label="Delete">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </div>
+
+    <mat-paginator
+      [pageSizeOptions]="[5, 10, 20]"
+      aria-label="Select page of periodic elements"
+    >
+    </mat-paginator>
+  </div>
+</div>
